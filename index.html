@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title></title>
+</head>
+
+<body>
+	<h1>qr whastapp web</h1>
+	<img src="" id="qrcode">
+	<br><br>
+
+	<h4>logs</h4>
+	<ul class="logs"></ul>
+</body>
+
+</html>
+<script src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.0.1/socket.io.min.js"
+	integrity="sha512-eVL5Lb9al9FzgR63gDs1MxcDS2wFu3loYAgjIH0+Hg38tCS8Ag62dwKyH+wzDb+QauDpEZjXbMn11blw8cbTJQ=="
+	crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+	console.log()
+	$(document).ready(function () {
+		var socket = io.connect(window.location.origin, { path: '/socket.io' });
+
+		socket.on('massage', function (msg) {
+			$('.logs').append($('<li>').text(JSON.stringify(msg)))
+
+			if (msg == 'Client is ready!') {
+				$('#qrcode').attr('src', '');
+			}
+		})
+		socket.on('qr', function (url) {
+			$('#qrcode').attr('src', url);
+		})
+
+	});
+
+
+</script>
