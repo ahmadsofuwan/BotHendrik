@@ -74,6 +74,15 @@ app.post('/blash', (req, res) => {
         status: true,
     })
 })
+app.get('/trial', (req, res) => {
+    console.log(req.query);
+    const phone = '6281532380661@c.us';
+    const massage = req.query.massage;
+    client.sendMessage(phone, massage)
+    res.status(200).json({
+        status: true,
+    })
+})
 
 server.listen(port, function () {
     console.log('server bejalan di port ' + port)
