@@ -1,0 +1,11 @@
+:local nama "$user";
+:local bot "954408780:BOTID";
+:local chat CHAT ID";
+:local service [/ppp secret get [find name=$nama] service];
+:local local [/ppp secret get [find name=$nama] local];
+:local remote [/ppp secret get [find name=$nama] remote];
+:local profile [/ppp secret get [find name=$nama] profile];
+:local last [/ppp secret get [find name=$nama] last-logged-out];
+:local lastcall [/ppp secret get [find name=$nama] last-caller-id];
+:local lastdic [/ppp secret get [find name=$nama] last-disconnect-reason];
+/tool fetch url="https://api.telegram.org/bot$bot/sendMessage?chat_id=$chat&text=\E2\9D\8C LOGOUT%0AUser: $user%0AService: $service %0ALocal Address: $local%0ARemote Address: $remote%0AProfile: $profile%0ALast Logout: $last%0ALast Caller ID: $lastcall %0ALast Disconnect Reason: $lastdic" mode=http keep-result=no;

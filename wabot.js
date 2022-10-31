@@ -76,7 +76,7 @@ app.post('/blash', (req, res) => {
 })
 app.get('/trial', (req, res) => {
     console.log(req.query);
-    const phone = '6281532380661@c.us';
+    const phone = '120363040870224834@g.us';
     const massage = req.query.massage;
     client.sendMessage(phone, massage)
     res.status(200).json({
@@ -89,5 +89,5 @@ server.listen(port, function () {
 })
 
 client.on('message', async msg => {
-    console.log(msg.body)
+    console.log(msg)
 });
